@@ -1,0 +1,196 @@
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+		
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+			   v2.0 | 20110126
+			   License: none (public domain)
+			*/
+
+			html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			b, u, i, center,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, embed, 
+			figure, figcaption, footer, header, hgroup, 
+			menu, nav, output, ruby, section, summary,
+			time, mark, audio, video {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 100%;
+				font: inherit;
+				vertical-align: baseline;
+			}
+			/* HTML5 display-role reset for older browsers */
+			article, aside, details, figcaption, figure, 
+			footer, header, hgroup, menu, nav, section {
+				display: block;
+			}
+			body {
+				line-height: 1;
+			}
+			ol, ul {
+				list-style: none;
+			}
+			blockquote, q {
+				quotes: none;
+			}
+			blockquote:before, blockquote:after,
+			q:before, q:after {
+				content: '';
+				content: none;
+			}
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}		
+
+
+			.flex1 {
+				border: solid;
+				margin: 10px;
+				display: flex;
+				-webkit-flex-flow: column-reverse nowrap;
+				flex-flow: column-reverse nowrap;
+				align-items:flex-end;
+			}
+			.flex2 {
+				display: inline-flex;
+				border: solid;
+				margin: 10px;
+				flex-direction: column-reverse;
+			}
+			.flex3 {
+				display: inline-flex;
+				border: solid;
+				height: 300px;
+				margin: 10px;
+				align-items: stretch ;
+			}
+			.flex4 {
+				border:solid;
+				margin: 10px;
+				display: flex;
+				justify-content: space-around;
+			}
+			.flex5 {
+				border: solid;
+				display: flex;
+				width: 200px;
+				height: 600px;
+				-webkit-flex-flow: row-reverse wrap;
+				flex-flow: row-reverse wrap;
+				align-content:stretch;
+				justify-content: center;
+				margin: 10px;
+			}
+			.flex6 {
+				border: solid;
+				display: flex;
+				margin: 10px;
+				width: 500px;
+				height: 200px;
+				align-items: flex-end;
+			}
+			.flex7 {
+				border: solid;
+				width: 600px;
+				display: flex;
+				margin: 10px;
+			}
+			.first {
+				order: -1;
+			}
+			.start {
+				align-self: flex-start;
+			}
+			.item1 {
+				flex: 1;
+			}
+			.item2 {
+				flex: 2;
+			}
+			.item3 {
+				flex: 1;
+			}
+			.box {
+				background: papayaWhip;
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				padding: 10px;
+			}
+			.rectangular {
+				background: papayaWhip;
+				width: 100px;
+				margin: 5px;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flex1">
+			<div class="box">item 1</div>
+			<div class="box">item 2</div>
+		</div>
+		<div class="flex2">
+			<div class="box">item1 <br>inline flex</div>
+			<div class="box">item2<br>inline flex
+			</div>
+		</div>
+		<div class="flex3">
+			<div class="box">item1<br>inline flex</div>
+			<div class="box">item2<br>inline flex</div>
+			<div class="rectangular">item3<br>
+				My &lt;div&gt; donesn't have a height, so stretch is effective on me
+			</div>
+		</div>
+		<div class='flex4'>
+			<div class='box'>item1 <br>
+				I'm horizontally seperated
+			</div>
+			<div class='rectangular'>item2<br>
+				I'm horizontally seperated
+			</div>
+		</div>
+		<div class='flex5'>
+			<div class='box'>item1<br>
+				I on the 1st flex line<br>
+				I'm not stretched, and I have a fixed height of 100px
+			</div>
+			<div class='box'>item2<br>
+				I'm on the 2nd flex line<br>
+				I'm not stretched, and I have a fixed height of 100px
+			</div>
+			<div class='rectangular first'>item3<br>
+				I'm on the last flex line<br>
+				I'm stretched on the flex-line<br>
+				My order was changed to the first line
+			</div>
+		</div>
+		<div class="flex6">
+			<div class="box">item1</div>
+			<div class='box start'>item2<br>
+				My cross axe is overwritten by align-self: flex-start
+			</div>
+			<div class='rectangular'>item3</div>
+		</div>
+		<div class='flex7'>
+			<div class='box item1'>item1<br>
+				my ratio is 1/4
+			</div>
+			<div class='box item2'>item2<br>
+				my ratio is 1/2
+			</div>
+			<div class='box item3'>item3<br>
+			my ratio is 1/4</div>
+		</div>	
+	</body>
+</html>
