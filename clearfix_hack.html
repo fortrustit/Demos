@@ -49,37 +49,34 @@
 			border-collapse: collapse;
 			border-spacing: 0;
 			}
-			.float {
-			float: left;
-			width: 100px;
-			height: 200px;
-			border: solid teal 5px;
+	
+			.wrapper {
+			border: solid;
 			margin: 10px;
-			overflow: scroll;
+			}
+			.solution0 {
+			clear: right;
+			}
+			.solution1 {
+			clear: right;
+			}
+			.solution2 {
+			overflow: hidden;
+			}
+			.wrapper:after {
+			content: '.';
+			display: block;
+			visibility: hidden;
+			height: 0;
+			clear: both;
 			}
 			.box {
-			border: solid teal 5px;
-			overflow: scroll;
-			margin: 10px;
-			}
-			.wrapper {
-			border: solid green;
-			height: 150px;
-			overflow: auto;
-			margin: 10px;
-			}
-			.wrapper-float-clear {
-			border: solid;
-			height: 150px;
-			margin: 10px;
-			height: 250px;
-			}
-			.cube {
 			border: solid;
 			margin: 10px;
 			background: pink;
-			height: 100px;
+			height: 200px;
 			padding: 10px;
+			width: 200px;
 			}
 			.float-left {
 			float: left;
@@ -87,22 +84,57 @@
 			.float-right {
 			float: right;
 			}
+			p {
+				padding: 10px;
+			}
+			.clear {
+			clear: right;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="wrapper-float-clear">
-			<div class="cube float-left">We caused our parent div collapsed <br> But we fixed this by using clear left and clear right <br> The green &lt;div&gt; below is the clearfix solution</div>
-			<div class="cube float-right">We caused our parent div collapsed <br> But we fixed this by using clear left and clear right <br> The green &lt;div&gt; below is the clearfix solution</div>
-		</div>
+
 		<div class="wrapper">
-			<div class="float">
-				This is a float
+			<div class="box float-left">item1</div>
+			<div class="box float-right">item2</div>
+			<div class="box clear">I was originally hidden under item 1, but I appeared by using clear: right.</div>
+		</div>
+
+		<div class="wrapper">
+			<div class="box float-right">Problem scenerio1: I'm floating on the left.<br>I don't have any clearfix hack at the moment, unfortunatley my direct parent element doesn't wrap me inside.</div>
+			<p>
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-				
-			</div>
-			<div class="box">
+			</p>
+		</div>
+
+		<div class="wrapper">
+			<p>
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-			</div>
+			</p>
+			<div class="box float-right">Problem scenerio2: I'm floating on left. <br>I was left out of the wrapper border because I was placed after the paragraph. <br>But I fixed this buy adding an empty &lt;div&gt; after me which has a clear: right. <br>But adding one more element is not semantically good. So the two methods below can be a more desierable solution.</div>
+			<div class="solution0"></div>
+		</div>
+
+		<div class="wrapper">
+			<div class="box float-right">float left.<br>Clearfix Hack <strong>Solution1</strong>: Similarly an empty &lt;div&gt; was added as the last child of the parent &lt;div&gt; with a property of clear: right</div>
+			<p>
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			</p>
+			<div class="solution1"></div>
+		</div>
+
+		<div class="wrapper solution2">
+			<div class="box float-right">float left.<br>Clearfix Hack <strong>Solution2</strong>: setting my parent &lt;div&gt; overflow:hidden</div>
+			<p>
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			</p>
+		</div>
+
+		<div class="wrapper">
+			<div class="box float-right">float left.<br>Clearfix Hack Solution3: using pesudo selector on the parent parent &lt;div&gt; to create a non-showing block and clear both</div>
+			<p>
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			</p>
 		</div>
 	</body>
 </html>
