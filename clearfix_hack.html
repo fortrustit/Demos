@@ -63,13 +63,37 @@
 			margin: 10px;
 			}
 			.wrapper {
-			border: solid black 5px;
+			border: solid green;
 			height: 150px;
 			overflow: auto;
-				}
+			margin: 10px;
+			}
+			.wrapper-float-clear {
+			border: solid;
+			height: 150px;
+			margin: 10px;
+			height: 250px;
+			}
+			.cube {
+			border: solid;
+			margin: 10px;
+			background: pink;
+			height: 100px;
+			padding: 10px;
+			}
+			.float-left {
+			float: left;
+			}
+			.float-right {
+			float: right;
+			}
 		</style>
 	</head>
 	<body>
+		<div class="wrapper-float-clear">
+			<div class="cube float-left">We caused our parent div collapsed <br> But we fixed this by using clear left and clear right <br> The green &lt;div&gt; below is the clearfix solution</div>
+			<div class="cube float-right">We caused our parent div collapsed <br> But we fixed this by using clear left and clear right <br> The green &lt;div&gt; below is the clearfix solution</div>
+		</div>
 		<div class="wrapper">
 			<div class="float">
 				This is a float
