@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<title>css positioning | z-index</title>
+		<style>
+		/* http://meyerweb.com/eric/tools/css/reset/
+		v2.0 | 20110126
+		License: none (public domain)
+		*/
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+		display: block;
+		}
+		body {
+		line-height: 1;
+		}
+		ol, ul {
+		list-style: none;
+		}
+		blockquote, q {
+		quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+		content: '';
+		content: none;
+		}
+		table {
+		border-collapse: collapse;
+		border-spacing: 0;
+		}
+			
+		.wrapper {
+		border: solid;
+		height: 200px;
+		margin: 10px;
+		position: relative;
+		}
+		.box {
+		margin: 10px;
+		padding: 10px;
+		background: lemonchiffon;
+		height: 100px;
+		width: 100px;
+		}
+		.relative {
+		position: relative;
+		top: 20px;
+		left: 20px;
+		}
+		.fixed {
+		position: fixed;
+		top: 450px;
+		z-index:2;
+		}
+		.absolute {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		}
+		.above {
+		position: relative;
+		z-index: 1;
+		background: ivory;
+		}
+		.below {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+		border: solid green;
+		background: yellow;
+		z-index: 0;
+		}
+		.child {
+		position: relative;
+		z-index: 100;
+		}
+		</style>
+	</head>
+	<body>
+		<div class= 'wrapper'>
+			<div class= 'box static'>static<br>I'm in the normal flow</div>
+		</div>
+		<div class= 'wrapper'>
+			<div class='box relative'>relative<br>
+			I'm relative to my normal flow</div>
+		</div>
+		<div class= 'wrapper'>
+			<div class= 'box fixed'>fixed<br>I'm relative to the viewport<br>z-index: 2</div>
+		</div>
+		<div class= 'wrapper'>
+			<div class= 'box absolute'>absolute>br?
+			I'm relative to the <b>positioned<b/> wrapper</div>
+		</div>
+		
+		<div class='wrapper'>
+			<div class='box above'>z-index:1</div>
+			<div class='box below'>
+				<div class='box child'>I'm a child with the highest z-index of 100</div>
+			</div>
+		</div>
+	</body>
+</html>
