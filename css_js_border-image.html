@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=The+Girl+Next+Door);
+      body {
+        height: 100%;
+        background: #FFCDAA;
+        font-family: 'The Girl Next Door', cursive;
+      }
+
+      span {
+        font-family: monospace;
+        color: white;
+      }
+
+      main {
+        position: relative;
+        text-align: center;
+        /*horizontally center the in-line block*/
+        background: #D4966A;
+        margin: 200px;
+        min-width: 500px;
+      }
+
+      div.canvas {
+        position: relative;
+        color: yellow;
+        background-color: teal;
+        border: 100px black solid;
+        font-size: 1em;
+        padding: 10px;
+        width: 50%;
+        height: 50%;
+        margin: 100px auto;
+        border-image: url("http://i1244.photobucket.com/albums/gg578/fortrustit/floral2_01_zpsflipesjk.jpg") 300 300;
+        /*overwirte the solid border*/
+        min-width: 250px;
+        /*minium width of the content*/
+        display: ;
+      }
+
+      div.canvas::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle;
+      }
+
+      div.canvas p {
+        vertical-align: middle;
+      }
+
+      div.buttons {
+        position: relative;
+        top: 2em;
+        text-align: center;
+        font-family: sans-serif;
+      }
+
+      div.buttons button {
+        margin: 5px;
+        display: inline-block;
+      }
+
+      div.repeat {
+        border-image: url("http://i1244.photobucket.com/albums/gg578/fortrustit/floral2_01_zpsflipesjk.jpg") 300 300 repeat;
+      }
+
+      div.round {
+        border-image: url("http://i1244.photobucket.com/albums/gg578/fortrustit/floral2_01_zpsflipesjk.jpg") 300 300 round;
+      }
+
+      div.stretch {
+        border-image: url("http://i1244.photobucket.com/albums/gg578/fortrustit/floral2_01_zpsflipesjk.jpg") 300 300 stretch;
+      }
+
+      div.space {
+        border-image: url("http://i1244.photobucket.com/albums/gg578/fortrustit/floral2_01_zpsflipesjk.jpg") 300 300 space;
+      }
+    </style>
+    <main>
+      <div class="buttons" id="buttons">
+        <button class="btn btn-warning btn-lg" role='button' id="repeat">repeat</button>
+        <button class="btn btn-primary btn-lg" id="round">round</button>
+        <button class='btn btn-danger btn-lg' id="stretch">stretch</button>
+        <button class='btn btn-info btn-lg' id="space">space</button>
+      </div>
+      <div class='canvas'>
+        <p>The default border-image is stretch ! This is nested inside a <span>&lt;div&gt;</span> which sits inside the <span>&lt;main&gt;</span> tag</p>
+      </div>
+    </main>
+    
+    <script type="text/javascript">
+      //binding the event to the direct parent handler instead of the four buttons
+      function getTarget(e) {
+        if (!e) {
+          e = window.event;
+        }
+        return e.target || e.srcElement //support IE8 and below
+      }
+
+      function borderImg(e) {
+        var target, addedClassName; //, oldClassName, newClassName;
+        target = getTarget(e);
+        console.log(target);
+        addedClassName = target.innerText;
+        console.log(addedClassName);
+        //newClassName = addedClassName + ' canvas';
+        //console.log(newClassName);
+        document.querySelector('.canvas').classList.toggle(addedClassName);
+      }
+
+      var el = document.getElementById("buttons");
+      if (el.addEventListener) {
+        el.addEventListener('click', function(e) {
+          borderImg(e);
+        }, false);
+      } else {
+        el.attachEvent("onclick", function(e) {
+          borderImg(e);
+        })
+      }
+    </script>
+  </body>
+
+</html>
+
