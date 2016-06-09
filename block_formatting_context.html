@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>Block Formatting Context</title>
+        <style>
+        /* http://meyerweb.com/eric/tools/css/reset/
+        v2.0 | 20110126
+        License: none (public domain)
+        */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+        display: block;
+        }
+        body {
+        line-height: 1;
+        }
+        ol, ul {
+        list-style: none;
+        }
+        blockquote, q {
+        quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+        content: '';
+        content: none;
+        }
+        table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        }
+        /*customized css starts here*/
+        .wrapper {
+        background: yellow;
+        margin: 20px;
+        display: block;
+        }
+        .box {
+        margin: 20px;
+        background: hotPink;
+        height: 100px;
+        padding: 10px;
+        }
+        .block-formatting-context {
+        overflow: hidden;
+        }
+        .float-left {
+        float: left;
+        width: 100px;
+        }   </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='box'>My upper margin was collapsed with the wrapper margin</div>
+            <div class='box'>My bottom margin was collapsed with the wrapper margin
+            </div>
+        </div>
+        <div class='wrapper block-formatting-context'>
+            <div class='box'>My upper margin showed up because the wrapper becomes a block formatting context by adding overflow: hidden</div>
+            <div class='box'>My bottom margin showed up because the wrapper becomes a block formatting context by adding overflow: hidden
+            </div>
+        </div>
+        <div class='wrapper block-formatting-context'>
+            <div class='box float-left'></div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class='wrapper block-formatting-context'>
+            <div class='box float-left'>BFC was used on the text on my right to fix the columns</div>
+            <p class='block-formatting-context'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class='wrapper'>
+            <div class='box float-left'>My parent &lt;div&gt; disappeared because I'taken out of the normal flow</div>
+        </div>
+        <div class='wrapper block-formatting-context'>
+            <div class='box float-left'>My parent &lt;div&gt; showed up because my parent &lt;div&gt; used
+            the BFC</div>
+        </div>
+    </body>
+</html>
