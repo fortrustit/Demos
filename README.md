@@ -1,2 +1,2 @@
-# MyDemos
+# Demos
 # These are some demos
